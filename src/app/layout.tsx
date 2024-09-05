@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import '@rainbow-me/rainbowkit/styles.css';
+import { Providers } from "@/providers";
+import { Karla } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const karla = Karla({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -26,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${karla.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
