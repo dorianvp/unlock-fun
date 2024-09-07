@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAccountModal, useConnectModal } from '@rainbow-me/rainbowkit'
 import { useAccount, useEnsName } from 'wagmi'
+import Link from 'next/link'
+import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
+import { cn } from '@/lib/utils'
+
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 20, hours: 10, minutes: 57 })
@@ -33,11 +37,21 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background text-white p-6">
-      <div className="flex justify-end items-center mb-20">
+    <div className="min-h-screen text-white bg-background">
+      <nav className="flex z-20 gap-3 justify-end items-center p-6 mb-20 border-b shadow-md border-foreground/20 bg-background">
+
+        <Button variant={'link'} asChild className='font-sans text-white'>
+          <Link href="#">
+            Docs
+          </Link>
+        </Button>
         {
           openConnectModal && (
-            <Button variant="outline" className="text-white" onClick={openConnectModal}>
+            <Button
+              variant="outline"
+              className="font-sans text-white border-2 transition-transform duration-100 hover:scale-105"
+              onClick={openConnectModal}
+            >
               Connect Wallet
             </Button>
 
@@ -49,33 +63,42 @@ export default function Home() {
 
           </Button>
         )}
-      </div>
-      <div className="flex justify-end items-center max-w-6xl mx-auto">
-
-        <div className="w-2/3 text-right">
-          <h1 className="text-9xl font-bold mb-4">
+      </nav>
+      <div className="flex justify-end items-center p-10 mx-auto">
+        <AnimatedGridPattern
+          numSquares={30}
+          maxOpacity={0.2}
+          duration={3}
+          repeatDelay={1}
+          className={cn(
+            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+            "inset-x-0  h-[100%] skew-y-0 z-0",
+          )}
+        />
+        <div className="md:text-right">
+          <h1 className="flex justify-start items-start mb-4 w-full text-6xl font-light md:text-9xl md:min-w-52">
             {String(timeLeft.days).padStart(2, '0')}:
             {String(timeLeft.hours).padStart(2, '0')}:
             {String(timeLeft.minutes).padStart(2, '0')}
           </h1>
-          <div className="flex justify-end text-sm mb-16">
+          <div className="flex justify-end mb-8 text-sm">
             <span className="mx-4">Days</span>
             <span className="mx-4">Hours</span>
             <span className="mx-4">Minutes</span>
           </div>
-          <h2 className="text-2xl mb-16">AIRDROP COUNTDOWN</h2>
+          <h2 className="mb-6 text-2xl">AIRDROP COUNTDOWN</h2>
         </div>
       </div>
-      <div className="w-1/3">
-        <h3 className="text-5xl font-bold mb-2">Burn tokens</h3>
-        <h3 className="text-5xl mb-8">Unlock Rewards</h3>
-        <div className="flex flex-col items-start space-y-4">
+      <div className="p-10 w-5/12">
+        <h3 className="mb-2 font-sans text-5xl font-bold">Burn tokens</h3>
+        <h3 className="mb-8 font-sans text-5xl">Unlock Rewards</h3>
+        <div className="flex gap-4 justify-center items-start">
           <Input
             type="email"
             placeholder="Enter Email"
-            className="bg-blue-800 border-none text-white placeholder-gray-400 w-full"
+            className="w-full font-sans placeholder-white text-white"
           />
-          <Button className="bg-teal-400 text-blue-900 hover:bg-teal-300 w-full">
+          <Button className="font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105">
             sign me up
           </Button>
         </div>

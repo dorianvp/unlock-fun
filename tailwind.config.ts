@@ -9,6 +9,10 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['var(--font-karla)'],
+				mono: ['var(--font-roboto-mono)'],
+			},
 			colors: {
 				background: '#07115E',
 				foreground: '#22F7DD',

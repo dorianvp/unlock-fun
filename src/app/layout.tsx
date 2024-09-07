@@ -8,7 +8,7 @@ import { Karla } from "next/font/google";
 const karla = Karla({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-karla',
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
