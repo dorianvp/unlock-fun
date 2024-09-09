@@ -1,13 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { useAccountModal, useConnectModal } from '@rainbow-me/rainbowkit'
 import { useAccount, useEnsName } from 'wagmi'
 import Link from 'next/link'
 import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 import { cn } from '@/lib/utils'
-
+import { CustomForm } from '@/components/ui/CustomForm/custom-form'
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 20, hours: 10, minutes: 57 })
@@ -54,7 +53,6 @@ export default function Home() {
             >
               Connect Wallet
             </Button>
-
           )
         }
         {openAccountModal && (
@@ -64,7 +62,7 @@ export default function Home() {
           </Button>
         )}
       </nav>
-      <div className="flex justify-end items-center p-10 mx-auto">
+      <div className="flex justify-end items-center p-10 mx-auto lg:px-60">
         <AnimatedGridPattern
           numSquares={30}
           maxOpacity={0.2}
@@ -89,19 +87,10 @@ export default function Home() {
           <h2 className="mb-6 text-2xl">AIRDROP COUNTDOWN</h2>
         </div>
       </div>
-      <div className="p-10 w-5/12">
+      <div className="p-10 lg:px-60">
         <h3 className="mb-2 font-sans text-5xl font-bold">Burn tokens</h3>
         <h3 className="mb-8 font-sans text-5xl">Unlock Rewards</h3>
-        <div className="flex gap-4 justify-center items-start">
-          <Input
-            type="email"
-            placeholder="Enter Email"
-            className="w-full font-sans placeholder-white text-white"
-          />
-          <Button className="font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105">
-            sign me up
-          </Button>
-        </div>
+        <CustomForm />
       </div>
     </div>
   )
