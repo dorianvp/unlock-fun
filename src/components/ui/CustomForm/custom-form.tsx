@@ -61,7 +61,7 @@ export function CustomForm() {
 								<Input
 									type="email"
 									placeholder="Enter Email"
-									className="w-full font-sans placeholder-white text-white"
+									className="w-full font-sans placeholder-white text-white lg:text-lg"
 									{...field}
 								/>
 							</FormControl>
@@ -73,7 +73,7 @@ export function CustomForm() {
 					address ? (
 						<Button
 							type='submit'
-							className="w-full md:w-auto font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105"
+							className="w-full lg:text-lg md:w-auto font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105"
 						>
 							sign me up
 						</Button>
@@ -88,7 +88,7 @@ export function CustomForm() {
 									event.preventDefault();
 									openConnectModal?.()
 								}}
-								className="w-full md:w-auto font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105"
+								className="w-full lg:text-lg md:w-auto font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105"
 							>
 								connect
 							</Button>

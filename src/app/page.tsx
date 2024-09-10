@@ -44,7 +44,7 @@ export default function Home() {
     <div className="min-h-screen text-white bg-background">
       <nav className="flex z-20 gap-3 justify-end items-center p-6 mb-20 border-b shadow-md border-foreground/20 bg-background">
 
-        <Button variant={'link'} asChild className='font-sans text-white'>
+        <Button variant={'link'} asChild className='font-sans text-white lg:text-lg'>
           <Link href="#">
             Docs
           </Link>
@@ -52,8 +52,8 @@ export default function Home() {
         {
           openConnectModal && (
             <Button
-              variant="outline"
-              className="font-sans text-white border-2 transition-transform duration-100 hover:scale-105"
+              variant="default"
+              className="font-sans lg:text-lg transition-transform duration-100 hover:scale-105"
               onClick={openConnectModal}
             >
               Connect Wallet
@@ -61,7 +61,7 @@ export default function Home() {
           )
         }
         {openAccountModal && (
-          <Button variant="default" onClick={openAccountModal}>
+          <Button variant="outline" onClick={openAccountModal}>
             {address && ensName ? ensName : formatAddress(address as `0x${string}`)}
 
           </Button>
