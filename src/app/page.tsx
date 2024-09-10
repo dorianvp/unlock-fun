@@ -9,31 +9,31 @@ import { cn } from '@/lib/utils'
 import { CustomForm } from '@/components/ui/CustomForm/custom-form'
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState({ days: 20, hours: 10, minutes: 57 })
+  // const [timeLeft, setTimeLeft] = useState({ days: 20, hours: 10, minutes: 57 })
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
   const { address } = useAccount();
   const { data: ensName } = useEnsName({ address })
 
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prevTime => {
-        if (prevTime.minutes > 0) {
-          return { ...prevTime, minutes: prevTime.minutes - 1 }
-        } else if (prevTime.hours > 0) {
-          return { ...prevTime, hours: prevTime.hours - 1, minutes: 59 }
-        } else if (prevTime.days > 0) {
-          return { ...prevTime, days: prevTime.days - 1, hours: 23, minutes: 59 }
-        } else {
-          clearInterval(timer)
-          return prevTime
-        }
-      })
-    }, 1000) // Update every minute
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setTimeLeft(prevTime => {
+  //       if (prevTime.minutes > 0) {
+  //         return { ...prevTime, minutes: prevTime.minutes - 1 }
+  //       } else if (prevTime.hours > 0) {
+  //         return { ...prevTime, hours: prevTime.hours - 1, minutes: 59 }
+  //       } else if (prevTime.days > 0) {
+  //         return { ...prevTime, days: prevTime.days - 1, hours: 23, minutes: 59 }
+  //       } else {
+  //         clearInterval(timer)
+  //         return prevTime
+  //       }
+  //     })
+  //   }, 1000) // Update every minute
 
-    return () => clearInterval(timer)
-  }, [])
+  //   return () => clearInterval(timer)
+  // }, [])
 
   function formatAddress(addr: `0x${string}`) {
     if (addr.length < 10) return addr
@@ -80,15 +80,16 @@ export default function Home() {
         />
         <div className="md:text-right">
           <h1 className="flex justify-start items-start mb-4 w-full text-6xl font-light md:text-9xl md:min-w-52">
-            {String(timeLeft.days).padStart(2, '0')}:
+            Coming Soon
+            {/* {String(timeLeft.days).padStart(2, '0')}:
             {String(timeLeft.hours).padStart(2, '0')}:
-            {String(timeLeft.minutes).padStart(2, '0')}
+            {String(timeLeft.minutes).padStart(2, '0')} */}
           </h1>
-          <div className="flex justify-end mb-8 text-sm">
+          {/* <div className="flex justify-end mb-8 text-sm">
             <span className="mx-4">Days</span>
             <span className="mx-4">Hours</span>
             <span className="mx-4">Minutes</span>
-          </div>
+          </div> */}
           <h2 className="mb-6 text-2xl">AIRDROP COUNTDOWN</h2>
         </div>
       </div>
