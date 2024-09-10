@@ -141,7 +141,7 @@ export function GridPattern({
             height={height - 1}
             x={x * width + 1}
             y={y * height + 1}
-            fill="#22F7DD"
+            fill="#f6f6f6"
             strokeWidth="0"
           />
         ))}
