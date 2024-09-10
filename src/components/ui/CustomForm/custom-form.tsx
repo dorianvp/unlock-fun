@@ -36,8 +36,6 @@ export function CustomForm() {
 		if (address) {
 			values.address = address
 			registerUser(values).then(data => {
-				console.log("data", data);
-
 				if (data) {
 					toast("Signup Successful")
 				}
@@ -71,13 +69,6 @@ export function CustomForm() {
 						</FormItem>
 					)}
 				/>
-				{/* <Button
-					type='submit'
-					onClick={form.handleSubmit(handleAction)}
-					className="w-full md:w-auto font-sans font-bold text-blue-900 transition-transform duration-100 bg-foreground hover:bg-foreground/90 hover:scale-105"
-				>
-					sign me up
-				</Button> */}
 				{
 					address ? (
 						<Button

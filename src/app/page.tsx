@@ -35,6 +35,11 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
+  function formatAddress(addr: `0x${string}`) {
+    if (addr.length < 10) return addr
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+  }
+
   return (
     <div className="min-h-screen text-white bg-background">
       <nav className="flex z-20 gap-3 justify-end items-center p-6 mb-20 border-b shadow-md border-foreground/20 bg-background">
@@ -57,7 +62,7 @@ export default function Home() {
         }
         {openAccountModal && (
           <Button variant="default" onClick={openAccountModal}>
-            {address && ensName ? `${ensName} (${address})` : address}
+            {address && ensName ? ensName : formatAddress(address as `0x${string}`)}
 
           </Button>
         )}
