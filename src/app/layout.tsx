@@ -5,6 +5,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { Providers } from "@/providers";
 import { Karla } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const karla = Karla({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${karla.variable} ${geistMono.variable} antialiased`}
       >
+        <GoogleTagManager gtmId="G-6CWTZR25LW" />
         <Providers>
           {children}
           <Toaster />
