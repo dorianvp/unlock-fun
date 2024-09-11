@@ -1,5 +1,4 @@
 'use client'
-import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { useAccountModal, useConnectModal } from '@rainbow-me/rainbowkit'
 import { useAccount, useEnsName } from 'wagmi'
