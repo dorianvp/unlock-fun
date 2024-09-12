@@ -1,19 +1,18 @@
-'use client'
-import { Button } from "@/components/ui/button"
-import { useAccountModal, useConnectModal } from '@rainbow-me/rainbowkit'
-import { useAccount, useEnsName } from 'wagmi'
-import Link from 'next/link'
+"use client";
+import { Button } from "@/components/ui/button";
+import { useAccountModal, useConnectModal } from "@rainbow-me/rainbowkit";
+import { useAccount, useEnsName } from "wagmi";
+import Link from "next/link";
 import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
-import { cn } from '@/lib/utils'
-import { CustomForm } from '@/components/ui/CustomForm/custom-form'
+import { cn } from "@/lib/utils";
+import { CustomForm } from "@/components/ui/CustomForm/custom-form";
 
 export default function Home() {
   // const [timeLeft, setTimeLeft] = useState({ days: 20, hours: 10, minutes: 57 })
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
   const { address } = useAccount();
-  const { data: ensName } = useEnsName({ address })
-
+  const { data: ensName } = useEnsName({ address });
 
   // useEffect(() => {
   //   const timer = setInterval(() => {
@@ -35,34 +34,34 @@ export default function Home() {
   // }, [])
 
   function formatAddress(addr: `0x${string}`) {
-    if (addr.length < 10) return addr
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+    if (addr.length < 10) return addr;
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
   }
 
   return (
     <div className="min-h-screen text-white bg-background">
       <nav className="flex z-20 gap-3 justify-end items-center p-6 mb-20 border-b shadow-md border-foreground/20 bg-background">
-
-        <Button variant={'link'} asChild className='font-sans text-white lg:text-lg'>
-          <Link href="#">
-            Docs
-          </Link>
+        <Button
+          variant={"link"}
+          asChild
+          className="font-sans text-white lg:text-lg"
+        >
+          <Link href="#">Docs</Link>
         </Button>
-        {
-          openConnectModal && (
-            <Button
-              variant="default"
-              className="font-sans lg:text-lg transition-transform duration-100 hover:scale-105"
-              onClick={openConnectModal}
-            >
-              Connect Wallet
-            </Button>
-          )
-        }
+        {openConnectModal && (
+          <Button
+            variant="default"
+            className="font-sans lg:text-lg transition-transform duration-100 hover:scale-105"
+            onClick={openConnectModal}
+          >
+            Connect Wallet
+          </Button>
+        )}
         {openAccountModal && (
           <Button variant="outline" onClick={openAccountModal}>
-            {address && ensName ? ensName : formatAddress(address as `0x${string}`)}
-
+            {address && ensName
+              ? ensName
+              : formatAddress(address as `0x${string}`)}
           </Button>
         )}
       </nav>
@@ -74,7 +73,7 @@ export default function Home() {
           repeatDelay={1}
           className={cn(
             "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-            "inset-x-0  h-[100%] skew-y-0 z-0",
+            "inset-x-0  h-[100%] skew-y-0 z-0"
           )}
         />
         <div className="md:text-right">
@@ -93,10 +92,14 @@ export default function Home() {
         </div>
       </div>
       <div className="p-10 lg:px-60">
-        <h3 className="mb-2 font-sans text-5xl font-bold">Burn tokens</h3>
-        <h3 className="mb-8 font-sans text-5xl">Unlock Rewards</h3>
+        <h3 className="mb-8 md:mb-2 font-sans text-5xl font-bold">
+          Join the next tokenomics game
+        </h3>
+        <h3 className="hidden md:block mb-8 font-sans text-5xl">
+          Reserve your portion of the airdrop
+        </h3>
         <CustomForm />
       </div>
     </div>
-  )
+  );
 }
